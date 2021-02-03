@@ -1,0 +1,30 @@
+= simple_form_for [:admin, @user], as: :user, url: admin_users_path do |f|
+  .card.card-accent-primary.user-form
+    .card-body
+      .row
+        .col-sm-6
+          .form-group
+            lable Username
+            = f.input :username, label: false
+          .form-group
+            lable Phone
+            = f.input :phone, label: false
+          .form-group
+            lable Email
+            = f.input :email, label: false
+        
+        .col-sm-6
+          .form-group
+            lable Name
+            = f.input :name, label: false
+          .form-group
+            lable Password
+            = f.input :password, label: false
+          .form-group
+            lable Password Confirmation
+            = f.input :password_confirmation, label: false
+
+  .row.submit-group
+    = f.button :submit, :class => 'btn btn-primary'
+
+    = link_to 'Cancel', admin_users_path, :class => "btn btn-cancel"

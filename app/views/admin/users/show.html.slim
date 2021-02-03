@@ -1,0 +1,51 @@
+.content
+  .row
+    .col-md-6
+      h1 Users
+
+    .col-md-6
+      ol.breadcrumb.float-sm-right
+        li.breadcrumb-item
+          = link_to admin_users_path
+            | Users
+        li.breadcrumb-item.active Show
+
+  .row
+    .col-md-12
+      .card.card-accent-primary
+        .card-body
+          = link_to "Edit", edit_admin_user_path, :class => "btn btn-primary"
+
+.clearfix
+
+.card.card-accent-primary
+  .card-body
+    .row
+      .col-sm-6
+        .table-responsive
+          table.table.table-striped.no-wrap
+            tr
+              td
+                strong= User.human_attribute_name(:Username) + ':'
+              td
+                = @user.username
+            tr
+              td
+                strong= User.human_attribute_name(:email) + ':'
+              td
+                = @user.email
+            tr
+              td
+                strong= User.human_attribute_name(:phone) + ':'
+              td
+                = @user.phone
+            tr
+              td
+                strong= User.human_attribute_name(:last_sign_in_at) + ':'
+              td
+                = @user.last_sign_in_at
+            tr
+              td
+                strong= User.human_attribute_name(:last_sign_in_ip) + ':'
+              td
+                = @user.last_sign_in_ip

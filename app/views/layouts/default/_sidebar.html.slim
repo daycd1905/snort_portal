@@ -1,0 +1,39 @@
+aside.main-sidebar.sidebar-dark-primary.elevation-4
+  /! Brand Logo
+  a.brand-link href="index3.html" 
+    span.brand-text.font-weight-light IAT401
+  /! Sidebar
+  .sidebar
+    nav.mt-2
+      ul.nav.nav-pills.nav-sidebar.flex-column data-accordion="false" data-widget="treeview" role="menu" 
+        li.nav-item
+          a.nav-link.active href="#" 
+            i.nav-icon.fas.fa-tachometer-alt
+            p
+              | Dashboard
+          
+        li.nav-item
+          = link_to admin_events_path, :class => "nav-link"
+            i.nav-icon.fas.fa-tachometer-alt
+            p
+              | Snort Log
+
+        li.nav-item
+          a.nav-link href="#" 
+            i.nav-icon.fas.fa-th
+            p
+              | Admin
+            i.right.fas.fa-angle-left
+
+          ul.nav.nav-treeview
+            li.nav-item
+              = link_to admin_users_path, :class => "nav-link"
+                i.far.fa-circle.nav-icon
+                p Users
+            li.nav-item
+              a.nav-link href="#" 
+                i.far.fa-circle.nav-icon
+                p Roles
+            
+    /! /.sidebar-menu
+  /! /.sidebar

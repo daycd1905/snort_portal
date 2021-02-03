@@ -1,0 +1,114 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+ @import "font-awesome-sprockets";
+ @import "font-awesome";
+ @import "admin";
+ @import "scrollbars";
+
+
+
+/* Login Form */
+.login-tex-header {
+  text-align: center;
+  font-size: 48px;
+  margin: 20px 0px 30px 0px;
+}
+/* ./Login Form */
+
+.fa-bars:before {
+  content: "\f0c9"; 
+}
+
+
+/* Header */
+.content-wrapper {
+  background-color: #f9f9f9 !important;
+  .content {
+    .row {
+      .col-md-6 {
+        h1 {
+          padding-left: 10px;
+        }
+      }
+      .col-md-6 {
+        .breadcrumb {
+          background-color: transparent;
+        }
+      }
+    }
+  }
+}
+
+.main-header {
+  .ml-auto {
+    .nav-item {
+      h4 {
+        margin: 0px;
+        font-size: 16px;
+      }
+    }
+  }
+}
+/* ./Header */
+
+/* Table */
+.table-striped {
+  border-collapse: collapse;
+
+  thead {
+    tr {
+      th {
+        background-color: #029b75;
+        border: 0px;
+        color: white;
+      }
+    }
+  }
+
+  tbody {
+    td {
+      border: 1px solid #dcdcdc;
+    }
+  }
+}
+/* ./ Table */
+
+/* Form */
+.form-group {
+  lable {
+    font-weight: 700;
+  }
+  
+  input {
+    width: 100%;
+  }
+}
+
+.user-form {
+  .col-md-6 {
+    padding: 0px !important;
+  }
+}
+
+.submit-group {
+  padding-left: 25px;
+  
+  .btn-cancel {
+    border: 2px solid #28a745;
+    margin-left: 10px;
+  }
+}
+/* ./From */

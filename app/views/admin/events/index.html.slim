@@ -1,0 +1,50 @@
+.content
+  .row
+    .col-md-6
+      h1 Logs
+
+    .col-md-6
+      ol.breadcrumb.float-sm-right
+        li.breadcrumb-item
+          = link_to admin_events_path
+            | Events
+        li.breadcrumb-item.active Index
+
+.row
+    .col-md-12
+      .table-responsive
+        table.table.table-striped.no-wrap
+          thead
+            tr
+              th= Event.human_attribute_name(:index)
+              th= Event.human_attribute_name(:Timestamp)
+              th= Event.human_attribute_name(:Signature)
+              th= Event.human_attribute_name(:Classification)
+              th= Event.human_attribute_name(:IP_source)
+              th= Event.human_attribute_name(:Port_source)
+              th= Event.human_attribute_name(:IP_destination)
+              th= Event.human_attribute_name(:Port_destination)
+
+
+          tbody
+            - @events.each_with_index do |event, index|
+              tr
+                td= index + 1
+                td= event.timestamp
+                td= event.log_signature.sig_name
+                td= event.log_signature.classification.sig_class_name
+                td= [event.iphdr.ip_src].pack('N').unpack('CCCC').join('.')
+                -if event.icmphdr
+                  td= 
+                -elsif event.tcphdr
+                  td= event.tcphdr.tcp_sport
+                -else
+                  td= event.udphdr.udp_sport
+
+                td= [event.iphdr.ip_dst].pack('N').unpack('CCCC').join('.')
+                -if event.icmphdr
+                  td= 
+                -elsif event.tcphdr
+                  td= event.tcphdr.tcp_dport
+                -else
+                  td= event.udphdr.udp_dport
