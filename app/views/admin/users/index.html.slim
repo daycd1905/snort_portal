@@ -38,7 +38,7 @@
               tr
                 td= index + 1
                 td= user.id
-                td= link_to user.username, admin_user_path(user.id), target: :_blank
+                td= link_to user.username, admin_user_path(user.id)
                 td= user.name
                 td= user.email
                 td= user.phone

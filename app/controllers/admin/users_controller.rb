@@ -29,6 +29,16 @@ module Admin
     end
 
     def edit
+      @user = User.find_by_id(params[:id])
+      
+      respond_with(@user)
+    end
+
+    def update
+      @user = User.find_by_id(params[:id])
+      @user.update(user_params)
+
+      respond_with @user, location: admin_user_path(@user)
     end
 
     private

@@ -1,4 +1,6 @@
-= simple_form_for [:admin, @user], as: :user, url: admin_users_path do |f|
+- url = %w(new create).include?(action_name) ? admin_users_path : admin_user_path(@user)
+
+= simple_form_for [:admin, @user], as: :user, url: url do |f|
   .card.card-accent-primary.user-form
     .card-body
       .row
