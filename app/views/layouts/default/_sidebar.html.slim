@@ -14,7 +14,7 @@ aside.main-sidebar.sidebar-dark-primary.elevation-4
           
         li.nav-item
           = link_to admin_events_path, :class => "nav-link"
-            i.nav-icon.fas.fa-tachometer-alt
+            i.nav-icon.fas.fa-file-alt
             p
               | Snort Log
 
@@ -31,7 +31,7 @@ aside.main-sidebar.sidebar-dark-primary.elevation-4
                 i.far.fa-circle.nav-icon
                 p Users
             li.nav-item
-              a.nav-link href="#" 
+              = link_to admin_roles_path, :class => "nav-link"
                 i.far.fa-circle.nav-icon
                 p Roles
             

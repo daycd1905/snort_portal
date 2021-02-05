@@ -1,0 +1,37 @@
+- url = %w(new create).include?(action_name) ? admin_roles_path : admin_role_path(@role)
+
+= simple_form_for [:admin, @role], as: :role, url: url do |f|
+  .card.card-accent-primary.user-form
+    .card-body
+      .row
+        .col-sm-6
+          = f.input :name
+    
+  input name='role[permission_ids][]' type='hidden' value=''
+
+  table.table.table-hover.table-bordered.no-wrap
+    thead
+      tr
+        th Permission
+        th Manage
+        th Read
+        th Create
+        th Update
+        th Destroy
+
+    tbody
+      - @permissions.each do |key, permission_group|
+        tr
+          td= key
+          - permission_group.each do |permission|
+            td
+              label.text-center.checkbox.inline
+                - if (permission.action == 'manage')
+                  input type='checkbox' value=permission.id name='role[permission_ids][]' checked=f.object.permission_ids.include?(permission.id) data-value='#{permission.action}' data-target='#{key}' /
+                  = permission.action
+                - else
+                  input type='checkbox' value=permission.id name='role[permission_ids][]' checked=f.object.permission_ids.include?(permission.id) data-value='#{key}' /
+                  = permission.action
+  = f.button :submit, class: 'btn-primary'
+
+  = link_to 'Cancel', admin_roles_path, :class => "btn btn-cancel"

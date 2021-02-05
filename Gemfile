@@ -30,6 +30,7 @@ gem 'slim-rails'
 gem 'simple_form'
 gem 'nested_form_fields'
 gem 'cancancan'
+gem 'select2-rails'
 
 # Debug
 gem 'pry-rails'
