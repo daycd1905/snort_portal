@@ -1,0 +1,46 @@
+- url = %w(new create).include?(action_name) ? admin_snort_rules_path : admin_snort_rule_path(@rule)
+
+= simple_form_for [:admin, @rule], as: :snort_rule, url: url do |f|
+  .card.card-accent-primary.user-form
+    .card-body
+      .row
+        .col-md-6
+          .form-group
+            .col-sm-12.snort-rule-block
+              lable Action
+              = f.input :action, label: false
+        
+        .col-md-6
+          .form-group
+            .col-sm-12.snort-rule-block
+              lable Protocol
+              = f.input :protocol, label: false
+
+            
+        .col-md-12
+          .form-group
+            .col-sm-4
+              .col-sm.12.snort-rule-block
+                lable Source Address
+                = f.input :src_address, label: false
+              .col-sm-12.snort-rule-block
+                lable Source Port
+                = f.input :src_port, label: false
+
+            .col-sm-4.snort-rule-block-direction
+              input#direction name="snort_rule[direction]" type="checkbox" value="->" /
+              label for="direction" ->
+
+              input#direction1 name="snort_rule[direction]" type="checkbox" value="<>" /
+              label for="direction1" <>
+                
+
+            .col-sm-4
+              .col-sm.12.snort-rule-block
+                lable Dest Address
+                = f.input :dest_address, label: false
+              .col-sm-12.snort-rule-block
+                lable Dest Port
+                = f.input :dest_port, label: false
+  .row.submit-group
+    = f.button :submit, :class => 'btn btn-primary'

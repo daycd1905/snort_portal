@@ -1,0 +1,52 @@
+.content
+  .row
+    .col-md-6
+      h1 Rules
+
+    .col-md-6
+      ol.breadcrumb.float-sm-right
+        li.breadcrumb-item
+          = link_to admin_snort_rules_path
+            | Rules
+        li.breadcrumb-item.active Index
+
+  .row
+    .col-md-12
+      .card.card-accent-primary
+        .card-body
+          = link_to "New", new_admin_snort_rule_path, :class => "btn btn-primary"
+
+
+.row
+    .col-md-12
+      .table-responsive
+        table.table.table-striped.no-wrap
+          thead
+            tr
+              th #
+              th= SnortRule.human_attribute_name(:action)
+              th= SnortRule.human_attribute_name(:protocol)
+              th= SnortRule.human_attribute_name(:src_address)
+              th= SnortRule.human_attribute_name(:src_port)
+              th= SnortRule.human_attribute_name(:direction)
+              th= SnortRule.human_attribute_name(:dest_address)
+              th= SnortRule.human_attribute_name(:dest_port)
+              th= SnortRule.human_attribute_name(:status)
+              th= SnortRule.human_attribute_name(:options)
+
+
+
+          tbody
+            - @rules.each_with_index do |rule, index|
+              tr
+                td= index + 1
+                td= rule.action
+                td= rule.protocol
+                td= rule.src_address
+                td= rule.src_port
+                td= rule.direction
+                td= rule.dest_address
+                td= rule.dest_port
+                td= rule.status
+                td= rule.options
+

@@ -16,7 +16,13 @@ aside.main-sidebar.sidebar-dark-primary.elevation-4
           = link_to admin_events_path, :class => "nav-link"
             i.nav-icon.fas.fa-file-alt
             p
-              | Snort Log
+              | Snort Logs
+
+        li.nav-item
+          = link_to admin_snort_rules_path, :class => "nav-link"
+            i.nav-icon.fas.fa-briefcase
+            p
+              | Snort Rules
 
         li.nav-item
           a.nav-link href="#" 

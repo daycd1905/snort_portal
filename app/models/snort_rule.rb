@@ -1,0 +1,3 @@
+class SnortRule < ApplicationRecord
+  
+end
