@@ -19,29 +19,28 @@
           = link_to "New", new_admin_user_path, :class => "btn btn-primary"
 
   .row
-    .col-md-12
-    .table-responsive
-        table.table.table-striped.no-wrap
-          thead
-            tr
-              th= User.human_attribute_name(:index)
-              th= User.human_attribute_name(:id)
-              th= User.human_attribute_name(:username)
-              th= User.human_attribute_name(:name)
-              th= User.human_attribute_name(:email)
-              th= User.human_attribute_name(:phone)
-              th= User.human_attribute_name(:last_sign_in_ip)
-              th= User.human_attribute_name(:created_at)
+    .col-md-12.table-wrapper
+      table.table.table-striped.no-wrap
+        thead
+          tr
+            th= User.human_attribute_name(:index)
+            th= User.human_attribute_name(:id)
+            th= User.human_attribute_name(:username)
+            th= User.human_attribute_name(:name)
+            th= User.human_attribute_name(:email)
+            th= User.human_attribute_name(:phone)
+            th= User.human_attribute_name(:last_sign_in_ip)
+            th= User.human_attribute_name(:created_at)
 
-          tbody
-            - @users.each_with_index do |user, index|
-              tr
-                td= index + 1
-                td= user.id
-                td= link_to user.username, admin_user_path(user.id)
-                td= user.name
-                td= user.email
-                td= user.phone
-                td= user.last_sign_in_ip
-                td= user.created_at
+        tbody
+          - @users.each_with_index do |user, index|
+            tr
+              td= index + 1
+              td= user.id
+              td= link_to user.username, admin_user_path(user.id)
+              td= user.name
+              td= user.email
+              td= user.phone
+              td= user.last_sign_in_ip
+              td= user.created_at
             

@@ -84,6 +84,19 @@
     }
   }
 }
+
+.table-wrapper {
+  padding: 0 30px 0 30px;;
+}
+
+.new-role {
+  label {
+    font-weight: 500 !important;
+  }
+  input {
+    margin: 0 10px 0 0;
+  }
+}
 /* ./ Table */
 
 /* Form */
@@ -119,11 +132,23 @@
     width: 25px;
     height: 25px;
   }
-  
-  .btn-primary {
-    background-color: #008061;
-    padding: 0px;
-  }
+}
+.btn-primary {
+  background-color: #008061;
+  padding: 10px 15px;
+}
+.btn-primary-edit {
+  background-color: #008061;
+}
+.btn-default {
+  color: #008061;
+  background-color: #FFFFFF;
+  border-color: #008061;
+  padding: 10px 15px;
+  margin: 0 0 0 5px;
+}
+.fa-pen-square {
+  color: white;
 }
 /*./Btn*/
 
@@ -139,3 +164,10 @@
   }
 }
 /*./Snort Rule Form*/
+
+/*Role Form*/
+.role_name_label {
+  float: left;
+  margin: 0 25px 0 0;
+}
+/*./Role Form*/
