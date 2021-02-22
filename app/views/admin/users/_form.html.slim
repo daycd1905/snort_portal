@@ -27,8 +27,8 @@
             = f.input :password_confirmation, label: false
         .col-sm-6
           .form-group
-            lable ROles
-            = f.association :roles, as: :select, multiple: true, label: false, collection: Role.all
+            lable Roles
+            = f.input :roles, as: :select, multiple: true, label: false, collection: Role.all
 
   .row.submit-group
     = f.button :submit, :class => 'btn btn-primary'

@@ -4,7 +4,6 @@ class UserForm < User
   validates :email, presence: true
   validates :password, presence: true
   validates :password_confirmation, presence: true
-
   validate :password_confirm
 
   def password_confirm
