@@ -28,7 +28,7 @@
         .col-sm-6
           .form-group
             lable Roles
-            = f.input :roles, as: :select, multiple: true, label: false, collection: Role.all
+            = f.input :roles, as: :select, label: false, collection: Role.all, input_html: { multiple: true, class: "input-lg"}
 
   .row.submit-group
     = f.button :submit, :class => 'btn btn-primary'

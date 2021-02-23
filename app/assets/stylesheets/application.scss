@@ -163,6 +163,40 @@
     }
   }
 }
+.snort-rule-block-direction {
+  label {
+    display: flex;
+    justify-content: center;
+  }
+  ul {
+    list-style-type: none;
+    padding: 0;
+    li {
+      display: flex;
+      justify-content: center;
+      input {
+        width: auto;
+        margin: 0 10px 0 0;
+        width: 20px;
+        height: 20px;
+      }
+      label {
+        width: auto;
+        float: left;
+      }
+    }
+    .li-last {
+      margin: 45px 0 0 0 !important;
+    }
+  }
+}
+
+#snort_rule_options {
+  width: 100%;
+}
+.wrong-clearfix {
+  padding: 0;
+}
 /*./Snort Rule Form*/
 
 /*Role Form*/

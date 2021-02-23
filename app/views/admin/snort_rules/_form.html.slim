@@ -15,11 +15,10 @@
             .col-sm-12.snort-rule-block
               lable Protocol
               = f.input :protocol, label: false
-
             
-        .col-md-12
+        .col-md-12.wrong-clearfix
           .form-group
-            .col-sm-4
+            .col-sm-4.wrong-clearfix
               .col-sm.12.snort-rule-block
                 lable Source Address
                 = f.input :src_address, label: false
@@ -28,19 +27,28 @@
                 = f.input :src_port, label: false
 
             .col-sm-4.snort-rule-block-direction
-              input#direction name="snort_rule[direction]" type="checkbox" value="->" /
-              label for="direction" ->
-
-              input#direction1 name="snort_rule[direction]" type="checkbox" value="<>" /
-              label for="direction1" <>
+              label Direction
+              ul
+                li
+                  input#direction name="snort_rule[direction]" type="checkbox" value="->" /
+                  label for="direction" ->
+                
+                li.li-last
+                  input#direction1 name="snort_rule[direction]" type="checkbox" value="<>" /
+                  label for="direction1" <>
                 
 
-            .col-sm-4
+            .col-sm-4.wrong-clearfix
               .col-sm.12.snort-rule-block
                 lable Dest Address
                 = f.input :dest_address, label: false
               .col-sm-12.snort-rule-block
                 lable Dest Port
                 = f.input :dest_port, label: false
+
+        .col-md-12.wrong-clearfix
+          .form-group
+            .col-sm-12.snort-rule-block
+              = f.input :options, lable: false
   .row.submit-group
     = f.button :submit, :class => 'btn btn-primary'
