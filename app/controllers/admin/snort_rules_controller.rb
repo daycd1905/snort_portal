@@ -3,7 +3,7 @@ module Admin
     before_action :set_authorization
     
     def index
-      @rules = SnortRule.all
+      @rules = paging SnortRule.all
     end
 
     def new

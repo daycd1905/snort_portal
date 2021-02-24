@@ -214,3 +214,37 @@
   }
 }
 /*./Select*/
+
+
+/*paging*/
+.per-page {
+  a {
+    color: #333333;
+    line-height: 1.25;
+    margin-right: 5px;
+    border: 1px solid #DADADA;
+    border-radius: 4px;
+    padding: 0.5rem 0.75rem;
+    display: inline-block;
+    background-color: #FFFFFF;
+  
+    &:hover {
+      color: #FFFFFF;
+      text-decoration: none;
+      background-color: #008061;
+    }
+  
+    &:focus {
+      @extend :hover;
+    }
+  
+    &.active {
+      @extend :hover;
+    }
+  }
+  
+  &:last-child a {
+    margin-right: 0px;
+  }
+}
+/*/paging*/

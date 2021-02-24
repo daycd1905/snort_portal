@@ -43,4 +43,6 @@
               td= user.phone
               td= user.last_sign_in_ip
               td= user.created_at
+    
+      = render 'shared/paging', collection: @users            
             

@@ -12,7 +12,7 @@
 
 .row
     .col-md-12
-      .table-responsive
+      .table-responsive.table-wrapper
         table.table.table-striped.no-wrap
           thead
             tr
@@ -48,3 +48,5 @@
                   td= event.tcphdr.tcp_dport
                 -else
                   td= event.udphdr.udp_dport
+
+        = render "shared/paging", collection: @events

@@ -31,6 +31,10 @@ gem 'simple_form'
 gem 'nested_form_fields'
 gem 'cancancan'
 gem 'select2-rails'
+gem 'will_paginate', '~> 3.1'
+gem 'kaminari'
+gem 'kaminari-grape'
+gem 'bootstrap-kaminari-views'
 
 # Debug
 gem 'pry-rails'

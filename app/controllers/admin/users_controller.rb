@@ -3,7 +3,7 @@ module Admin
     before_action :set_authorization
 
     def index
-      @users = User.all
+      @users = paging User.all
     end
 
     def new
