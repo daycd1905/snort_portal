@@ -35,6 +35,7 @@ gem 'will_paginate', '~> 3.1'
 gem 'kaminari'
 gem 'kaminari-grape'
 gem 'bootstrap-kaminari-views'
+gem 'httparty'
 
 # Debug
 gem 'pry-rails'

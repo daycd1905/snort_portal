@@ -1,3 +1,5 @@
+require './lib/external_api/client.rb'
+
 module SnortApi
   class Client < ExternalApi::Client
     # Make request with action
