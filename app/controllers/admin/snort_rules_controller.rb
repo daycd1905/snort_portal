@@ -2,7 +2,7 @@ module Admin
   class SnortRulesController < BaseController
     before_action :set_authorization
     
-    def index
+  def index
       @rules = paging SnortRule.all
     end
 
@@ -15,6 +15,8 @@ module Admin
 
       if @rule.valid?
         @rule = SnortRule.create(rule_params)
+        SnortApiService::SaveRuleService.new.execute
+        
         redirect_to action: "index"
       else
         render :new
