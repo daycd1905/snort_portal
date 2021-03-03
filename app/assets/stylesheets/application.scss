@@ -10,7 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- */
+*/
  @import "bootstrap-sprockets";
  @import "bootstrap";
  @import "font-awesome-sprockets";
@@ -197,6 +197,14 @@
 .wrong-clearfix {
   padding: 0;
 }
+.snort-rule-menu {
+  list-style-type: none;
+  padding: 0;
+  li {
+    float: left;
+    margin: 0 10px;
+  }
+}
 /*./Snort Rule Form*/
 
 /*Role Form*/
@@ -248,3 +256,20 @@
   }
 }
 /*/paging*/
+
+
+/*Flash message*/
+.flash-message {
+  font-weight: 700;
+  border-radius: 4px;
+  position: fixed;
+  left: 30px;
+  bottom: 0px;
+  z-index: 10000;
+}
+.alert-success {
+  background-color: #dff0d8;
+  border-color: #d0e9c6;
+  color: #3c763d;
+}
+/*./Flash message*/

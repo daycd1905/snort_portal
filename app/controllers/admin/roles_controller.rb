@@ -12,7 +12,7 @@ module Admin
 
     def create
       @role = RoleForm.new(role_params)
-      binding.pry
+
       if @role.valid?
         @role = Role.create(role_params)
       end

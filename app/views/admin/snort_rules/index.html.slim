@@ -14,7 +14,12 @@
     .col-md-12
       .card.card-accent-primary
         .card-body
-          = link_to "New", new_admin_snort_rule_path, :class => "btn btn-primary"
+          ul.snort-rule-menu
+            li
+              = link_to "New", new_admin_snort_rule_path, :class => "btn btn-primary"
+            li
+              = link_to "Restart Snort", restart_snort_admin_snort_rules_path, :class => "btn btn-primary"
+        
 
 
 .row
@@ -34,7 +39,7 @@
             th= SnortRule.human_attribute_name(:status)
             th= SnortRule.human_attribute_name(:options)
         tbody
-          - @rules.each_with_index do |rule, index|
+        - @rules.each_with_index do |rule, index|
             tr
               td= index + 1
               td= rule.action

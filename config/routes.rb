@@ -9,7 +9,12 @@ Rails.application.routes.draw do
     resources :users
     resources :roles
 
-    resources :snort_rules
+    resources :snort_rules do
+      collection do
+        get :restart_snort
+      end
+    end
+
     resources :events
   end
 

@@ -9,8 +9,12 @@ module SnortApi
       @config ||= options[:config] || SnortApi.configuration
     end
 
-    def save_rules(params)
-      get('/api/snort_SaleRules', params)
+    def save_rules(params = {})
+      get('/snort_save_rule', params)
+    end
+
+    def restart_snort(params)
+      get('/snort_restart', params)
     end
 
     protected

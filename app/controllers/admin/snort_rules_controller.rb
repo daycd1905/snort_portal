@@ -2,7 +2,7 @@ module Admin
   class SnortRulesController < BaseController
     before_action :set_authorization
     
-  def index
+    def index
       @rules = paging SnortRule.all
     end
 
@@ -15,11 +15,33 @@ module Admin
 
       if @rule.valid?
         @rule = SnortRule.create(rule_params)
-        SnortApiService::SaveRuleService.new.execute
-        
-        redirect_to action: "index"
+        error_msg = SnortApiService::SaveRuleService.new.execute
+
+        if error_msg == ""
+          flash[:success] = "Save rule successfully!"
+          @rules = paging SnortRule.all
+          redirect_to action: "index"
+        else
+          flash[:error]= "Failed to save rule to snort"
+          @rules = paging SnortRule.all
+          render 'index'
+        end
       else
         render :new
+      end
+    end
+
+    def restart_snort
+      error_msg = SnortApiService::RestartSnort.new.execute
+
+      if error_msg == ""
+        flash[:success] = "Restart successfully!"
+        @rules = paging SnortRule.all
+        redirect_to action: "index"
+      else
+        flash[:error]= "Failed to restart"
+        @rules = paging SnortRule.all
+        render 'index'
       end
     end
   

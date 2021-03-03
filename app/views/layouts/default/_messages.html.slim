@@ -1,3 +1,7 @@
-#flash_messages
-  - flash.each do |key, value|
-    = content_tag(:div, value, :class => "flash #{key}")
+- flash.each do |type, msg|
+  - if type == 'success'
+    .flash-message.alert.in.alert-success
+      = msg
+  - if type == 'error'
+    .flash-message.alert.in.alert-danger
+      = msg
