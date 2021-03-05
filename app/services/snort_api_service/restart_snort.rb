@@ -14,8 +14,8 @@ module SnortApiService
         resp = call_api
 
         fail error_message = resp.body["error"] unless resp.success?
-      rescue StandardError => e
-        error_message
+      rescue StandardError => error
+        error
       end
     end
 

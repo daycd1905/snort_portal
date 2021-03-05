@@ -2739,9 +2739,3 @@
 
 })));
 //# sourceMappingURL=adminlte.js.map
-
-$(function() {
-  setInterval(function(){
-    $('.flash-message').addClass('fade')
-  }, 5000);
-});

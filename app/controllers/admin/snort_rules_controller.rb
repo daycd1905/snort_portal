@@ -15,14 +15,14 @@ module Admin
 
       if @rule.valid?
         @rule = SnortRule.create(rule_params)
-        error_msg = SnortApiService::SaveRuleService.new.execute
+        error_msg = SnortApiService::SaveRule.new.execute
 
         if error_msg == ""
           flash[:success] = "Save rule successfully!"
           @rules = paging SnortRule.all
           redirect_to action: "index"
         else
-          flash[:error]= "Failed to save rule to snort"
+          flash[:error]= error_msg
           @rules = paging SnortRule.all
           render 'index'
         end
@@ -39,7 +39,7 @@ module Admin
         @rules = paging SnortRule.all
         redirect_to action: "index"
       else
-        flash[:error]= "Failed to restart"
+        flash[:error]= error_msg
         @rules = paging SnortRule.all
         render 'index'
       end
