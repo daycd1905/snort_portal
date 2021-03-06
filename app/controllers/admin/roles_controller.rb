@@ -20,6 +20,19 @@ module Admin
       respond_with :admin, @role
     end
 
+    def edit
+      @role = Role.find_by_id(params[:id])
+      
+      respond_with(@role)
+    end
+
+    def update
+      @role = Role.find_by_id(params[:id])
+      @role.update(role_params)
+
+      redirect_to action: :index
+    end
+
     private
 
     def set_permissions
