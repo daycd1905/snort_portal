@@ -44,14 +44,14 @@ rails -v
 
 
 # Set up Enviroment variables
-`
+```bash
 DB_HOST= <ip postgresql>
 DB_PORT= <port postgresql>
 DB_NAME= <database name>
 DB_USERNAME= <database username>
 DB_PASSWORD= <database password>
 SNORT_API_ENDPOINT= <ip snort api>
-`
+```
 
 
 # Run app
