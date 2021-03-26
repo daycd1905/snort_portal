@@ -3,7 +3,7 @@ module Admin
     before_action :set_authorization
     
     def index
-      @rules = paging SnortRule.all
+      @rules = paging SnortRule.all.order(created_at: :desc)
     end
 
     def new
@@ -11,23 +11,62 @@ module Admin
     end
 
     def create
+      error_msg = ""
       @rule = SnortRuleForm.new(rule_params)
 
       if @rule.valid?
-        @rule = SnortRule.create(rule_params)
-        error_msg = SnortApiService::SaveRule.new.execute
+        begin
+          ActiveRecord::Base.transaction do
+            @rule = SnortRule.create(rule_params)
+            error_msg = SnortApiService::SaveRule.new.execute
 
-        if error_msg == ""
-          flash[:success] = "Save rule successfully!"
-          @rules = paging SnortRule.all
-          redirect_to action: "index"
-        else
+            raise error_msg if error_msg.present?
+
+            flash[:success] = "Save rule successfully!"
+            @rules = paging SnortRule.all.order(created_at: :desc)
+            redirect_to action: "index"
+          end
+        rescue StandardError => e
           flash[:error]= error_msg
-          @rules = paging SnortRule.all
-          render 'index'
+          @rules = paging SnortRule.all.order(created_at: :desc)
+          redirect_to action: "index"
         end
       else
         render :new
+      end
+    end
+
+    def show
+      @rule = SnortRule.find_by_id(params[:id])
+      
+      respond_with(@rule)
+    end
+
+    def edit
+      @rule = SnortRule.find_by_id(params[:id])
+      
+      respond_with(@rule)
+    end
+
+    def update
+      error_msg = ""
+      @rule = SnortRule.find_by_id(params[:id])
+
+      begin
+        ActiveRecord::Base.transaction do
+          @rule.update(rule_params)
+          error_msg = SnortApiService::SaveRule.new.execute
+
+          raise error_msg if error_msg.present?
+
+          flash[:success] = "Save rule successfully!"
+          @rules = paging SnortRule.all.order(created_at: :desc)
+          redirect_to action: "index"
+        end
+
+      rescue StandardError => e
+        flash[:error]= error_msg
+        render 'edit'
       end
     end
 

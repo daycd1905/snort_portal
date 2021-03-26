@@ -10,6 +10,8 @@ class CreateRules < ActiveRecord::Migration[6.0]
       t.string    :dest_port
       t.boolean   :status, default: true
       t.jsonb     :options, default: {}
+
+      t.timestamps
     end
 
     add_index :snort_rules, :action

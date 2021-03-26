@@ -1,0 +1,66 @@
+.content
+  .row
+    .col-md-6
+      h1 Snort Rules
+
+    .col-md-6
+      ol.breadcrumb.float-sm-right
+        li.breadcrumb-item
+          = link_to admin_snort_rules_path
+            | Snort Rules
+        li.breadcrumb-item.active Show
+
+  .row
+    .col-md-12
+      .card.card-accent-primary
+        .card-body
+          = link_to "Edit", edit_admin_snort_rule_path, :class => "btn btn-primary"
+
+.clearfix
+
+.card.card-accent-primary
+  .card-body
+    .row
+      .col-sm-6
+        .table-responsive
+          table.table.table-striped.no-wrap
+            tr
+              td
+                strong= SnortRule.human_attribute_name(:Action) + ':'
+              td
+                = @rule.action
+            tr
+              td
+                strong= SnortRule.human_attribute_name(:Protocol) + ':'
+              td
+                = @rule.protocol
+            tr
+              td
+                strong= SnortRule.human_attribute_name(:Src_address) + ':'
+              td
+                = @rule.src_address
+            tr
+              td
+                strong= SnortRule.human_attribute_name(:Src_port) + ':'
+              td
+                = @rule.src_port
+            tr
+              td
+                strong= SnortRule.human_attribute_name(:Direction) + ':'
+              td
+                = @rule.direction
+            tr
+              td
+                strong= SnortRule.human_attribute_name(:Dest_address) + ':'
+              td
+                = @rule.dest_address
+            tr
+              td
+                strong= SnortRule.human_attribute_name(:Dest_port) + ':'
+              td
+                = @rule.dest_port
+            tr
+              td
+                strong= SnortRule.human_attribute_name(:Options) + ':'
+              td
+                = @rule.options

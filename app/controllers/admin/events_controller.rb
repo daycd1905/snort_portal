@@ -3,7 +3,7 @@ module Admin
     before_action :set_authorization
 
     def index
-      @events = paging Event.includes(:iphdr, :icmphdr, :tcphdr).all
+      @events = paging Event.includes(:iphdr, :icmphdr, :tcphdr).all.order(timestamp: :desc)
     end
 
     def set_authorization

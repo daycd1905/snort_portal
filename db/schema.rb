@@ -165,6 +165,8 @@ ActiveRecord::Schema.define(version: 2021_02_05_133631) do
     t.string "dest_port"
     t.boolean "status", default: true
     t.jsonb "options", default: {}
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["action"], name: "index_snort_rules_on_action"
     t.index ["dest_address"], name: "index_snort_rules_on_dest_address"
     t.index ["dest_port"], name: "index_snort_rules_on_dest_port"

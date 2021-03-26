@@ -1,5 +1,16 @@
 # snort_portal
 
+## Update MD lan 2
+# Run CMD nay truoc khi pull code
+```bash
+rake db:migrate:down VERSION=20210205133631
+```
+Sau do pull code
+# Run CMD
+```bash
+rake db:migrate
+```
+
 ## Cài trước postgreql
 
 ## Installing Ruby
