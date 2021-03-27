@@ -18,6 +18,7 @@ module Admin
         begin
           ActiveRecord::Base.transaction do
             @rule = SnortRule.create(rule_params)
+          end
             error_msg = SnortApiService::SaveRule.new.execute
 
             raise error_msg if error_msg.present?
@@ -25,7 +26,7 @@ module Admin
             flash[:success] = "Save rule successfully!"
             @rules = paging SnortRule.all.order(created_at: :desc)
             redirect_to action: "index"
-          end
+          #end
         rescue StandardError => e
           flash[:error]= error_msg
           @rules = paging SnortRule.all.order(created_at: :desc)
@@ -55,6 +56,7 @@ module Admin
       begin
         ActiveRecord::Base.transaction do
           @rule.update(rule_params)
+        end
           error_msg = SnortApiService::SaveRule.new.execute
 
           raise error_msg if error_msg.present?
@@ -62,7 +64,7 @@ module Admin
           flash[:success] = "Save rule successfully!"
           @rules = paging SnortRule.all.order(created_at: :desc)
           redirect_to action: "index"
-        end
+        #end
 
       rescue StandardError => e
         flash[:error]= error_msg
