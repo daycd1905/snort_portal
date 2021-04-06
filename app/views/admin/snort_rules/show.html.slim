@@ -14,7 +14,17 @@
     .col-md-12
       .card.card-accent-primary
         .card-body
-          = link_to "Edit", edit_admin_snort_rule_path, :class => "btn btn-primary"
+          ul.snort-rule-menu
+            li
+              = link_to "Edit", edit_admin_snort_rule_path, :class => "btn btn-primary"
+            - if @rule.status
+              li
+                = link_to "Deactive", deactive_rule_admin_snort_rule_path, :class => "btn btn-warning"
+            - else
+              li
+                = link_to "Active", active_rule_admin_snort_rule_path, :class => "btn btn-warning"
+            li
+              = link_to "Delete", admin_snort_rule_path, method: :delete, :class => "btn btn-danger"
 
 .clearfix
 
@@ -59,6 +69,11 @@
                 strong= SnortRule.human_attribute_name(:Dest_port) + ':'
               td
                 = @rule.dest_port
+            tr
+              td
+                strong= SnortRule.human_attribute_name(:Status) + ':'
+              td
+                = @rule.status
             tr
               td
                 strong= SnortRule.human_attribute_name(:Options) + ':'

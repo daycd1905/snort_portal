@@ -12,6 +12,12 @@ Rails.application.routes.draw do
     resources :snort_rules do
       collection do
         get :restart_snort
+        get :save_rule
+      end
+
+      member do
+        get :active_rule
+        get :deactive_rule
       end
     end
 

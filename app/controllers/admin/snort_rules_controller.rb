@@ -16,17 +16,14 @@ module Admin
 
       if @rule.valid?
         begin
-          ActiveRecord::Base.transaction do
-            @rule = SnortRule.create(rule_params)
-          end
-            error_msg = SnortApiService::SaveRule.new.execute
+          @rule = SnortRule.create(rule_params)
+          error_msg = SnortApiService::SaveRule.new.execute
 
-            raise error_msg if error_msg.present?
+          raise error_msg if error_msg.present?
 
-            flash[:success] = "Save rule successfully!"
-            @rules = paging SnortRule.all.order(created_at: :desc)
-            redirect_to action: "index"
-          #end
+          flash[:success] = "Save rule successfully!"
+          @rules = paging SnortRule.all.order(created_at: :desc)
+          redirect_to action: "index"
         rescue StandardError => e
           flash[:error]= error_msg
           @rules = paging SnortRule.all.order(created_at: :desc)
@@ -54,18 +51,14 @@ module Admin
       @rule = SnortRule.find_by_id(params[:id])
 
       begin
-        ActiveRecord::Base.transaction do
-          @rule.update(rule_params)
-        end
-          error_msg = SnortApiService::SaveRule.new.execute
+        @rule.update(rule_params)
+        error_msg = SnortApiService::SaveRule.new.execute
 
-          raise error_msg if error_msg.present?
+        raise error_msg if error_msg.present?
 
-          flash[:success] = "Save rule successfully!"
-          @rules = paging SnortRule.all.order(created_at: :desc)
-          redirect_to action: "index"
-        #end
-
+        flash[:success] = "Save rule successfully!"
+        @rules = paging SnortRule.all.order(created_at: :desc)
+        redirect_to action: "index"
       rescue StandardError => e
         flash[:error]= error_msg
         render 'edit'
@@ -84,6 +77,41 @@ module Admin
         @rules = paging SnortRule.all
         render 'index'
       end
+    end
+
+    def save_rule
+      error_msg = SnortApiService::SaveRule.new.execute
+    
+      if error_msg == ""
+        flash[:success] = "Save Rules successfully!"
+        @rules = paging SnortRule.all
+        redirect_to action: "index"
+      else
+        flash[:error]= error_msg
+        @rules = paging SnortRule.all
+        render 'index'
+      end
+    end
+
+    def deactive_rule
+      @rule = SnortRule.find_by_id(params[:id])
+
+      @rule.update(status: false)
+      render 'show'
+    end
+
+    def active_rule
+      @rule = SnortRule.find_by_id(params[:id])
+
+      @rule.update(status: true)
+      render 'show'
+    end
+
+    def destroy
+      @rule = SnortRule.find_by_id(params[:id])
+      
+      @rule.destroy
+      redirect_to action: 'index'
     end
   
     private
