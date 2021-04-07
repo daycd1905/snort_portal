@@ -36,6 +36,7 @@ gem 'kaminari'
 gem 'kaminari-grape'
 gem 'bootstrap-kaminari-views'
 gem 'httparty'
+gem 'xxd'
 
 # Debug
 gem 'pry-rails'

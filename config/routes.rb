@@ -21,7 +21,11 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :events
+    resources :events do
+      member do
+        get :detail
+      end
+    end
   end
 
   get '/', to: 'admin/dashboards#dashboard'

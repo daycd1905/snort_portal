@@ -156,6 +156,18 @@
 .fa-pen-square {
   color: white;
 }
+.event-detail {
+  color: #337ab7;
+}
+.event-message {
+  padding: 0 0 0 20px !important;
+  pre {
+    margin: 0;
+    padding: 0 !important;
+    border: none !important;
+    font-size: 16px;
+  }
+}
 /*./Btn*/
 
 /*Snort Rule Form*/

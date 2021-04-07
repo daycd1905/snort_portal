@@ -1,5 +1,13 @@
 # snort_portal
 
+## Update MD lan 3
+# Pull code truoc sau do chay cmd
+```bash
+bundle install
+rake db:migrate
+```
+
+
 ## Update MD lan 2
 # Run CMD nay truoc khi pull code
 ```bash

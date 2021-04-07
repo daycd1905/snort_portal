@@ -24,6 +24,7 @@
               th= Event.human_attribute_name(:Port_source)
               th= Event.human_attribute_name(:IP_destination)
               th= Event.human_attribute_name(:Port_destination)
+              th= 
 
 
           tbody
@@ -48,5 +49,10 @@
                   td= event.tcphdr.tcp_dport
                 -else
                   td= event.udphdr.udp_dport
+                -if event.data
+                  td
+                    = link_to 'Detail', detail_admin_event_path(event), :class => "event-detail"
+                -else
+                  td=
 
         = render "shared/paging", collection: @events

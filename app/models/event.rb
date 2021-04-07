@@ -8,6 +8,7 @@ class Event < ApplicationRecord
   has_one :icmphdr, :foreign_key => [:cid, :sid]
   has_one :tcphdr, :foreign_key => [:cid, :sid]
   has_one :udphdr, :foreign_key => [:cid, :sid]
+  has_one :data, :foreign_key => [:cid, :sid]
 
   belongs_to :log_signature, :primary_key => :sig_id , :foreign_key => :signature
 end

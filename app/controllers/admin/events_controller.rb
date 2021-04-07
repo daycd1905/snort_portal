@@ -3,7 +3,16 @@ module Admin
     before_action :set_authorization
 
     def index
-      @events = paging Event.includes(:iphdr, :icmphdr, :tcphdr).all.order(timestamp: :desc)
+      @events = paging Event.includes(:iphdr, :icmphdr, :tcphdr, :data).all.order(timestamp: :desc)
+    end
+
+    def detail
+      sid, cid = normalize_event_id
+
+      @event = Event.includes(:data).where(sid: sid, cid: cid).last
+      @data  = @event.data
+
+      @messages = EventService::DecodeEventDetail.new(@data.data_payload).execute
     end
 
     def set_authorization
@@ -24,6 +33,18 @@ module Admin
           layout: 'admin'
         )
       end
+    end
+
+    private
+
+    def event_detail_params
+      params.require(:id)
+    end
+
+    def normalize_event_id
+      id = event_detail_params.split(',')
+
+      sid = id.last.to_i, cid = id.first.to_i
     end
   end
 end
