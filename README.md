@@ -1,5 +1,11 @@
 # snort_portal
 
+## Update MD lan 4
+# Pull code truoc sau do run cmd
+```bash
+bundle install
+```
+
 ## Update MD lan 3
 # Pull code truoc sau do chay cmd
 ```bash

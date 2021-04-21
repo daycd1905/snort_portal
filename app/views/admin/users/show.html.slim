@@ -41,11 +41,31 @@
                 = @user.phone
             tr
               td
+                strong= User.human_attribute_name(:sign_in_count) + ':'
+              td
+                = @user.sign_in_count
+            tr
+              td
+                strong= User.human_attribute_name(:current_sign_in_at) + ':'
+              td
+                = @user.current_sign_in_at
+            tr
+              td
                 strong= User.human_attribute_name(:last_sign_in_at) + ':'
               td
                 = @user.last_sign_in_at
             tr
               td
+                strong= User.human_attribute_name(:current_sign_in_ip) + ':'
+              td
+                = @user.current_sign_in_ip
+            tr
+              td
                 strong= User.human_attribute_name(:last_sign_in_ip) + ':'
               td
                 = @user.last_sign_in_ip
+            tr
+              td
+                strong= User.human_attribute_name(:created_at) + ':'
+              td
+                = @user.created_at
