@@ -1,6 +1,7 @@
 require_relative "boot"
 
 require "rails/all"
+require './app/middlewares/request_logger'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -18,5 +19,18 @@ module SnortManagement
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # Rack CORS configurations
+    config.middleware.use Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', headers: :any, methods: %i(get post options put delete)
+      end
+    end
+
+    # Allow exceptions to be propagated to Raven::Rack middleware
+    # config.action_dispatch.show_exceptions = false
+
+    config.middleware.insert_after Rails::Rack::Logger, ::RequestLogger
   end
 end

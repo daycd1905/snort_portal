@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/', to: 'admin/dashboards#dashboard'
+  get '/', to: 'admin/events#index'
 
-  root to: 'admin/dashboards#index'
+  root to: 'admin/events#index'
 end

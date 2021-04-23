@@ -3,7 +3,21 @@ module Admin
     before_action :set_authorization
 
     def index
-      @events = paging Event.includes(:iphdr, :icmphdr, :tcphdr, :data).all.order(timestamp: :desc)
+      page      = params[:page].blank? ? 1 : params[:page].to_i
+      per_page  = params[:per_page].blank? ? Kaminari.config.default_per_page : params[:per_page].to_i
+      offset    = (page - 1) * per_page
+      
+      results = EventQuery::Events.new().execute_events
+      total_events = EventQuery::Events.new().execute_events_count
+
+      histories = results.map { |event| EventHistory.new(ActiveSupport::HashWithIndifferentAccess.new(event.to_h)) }
+
+      @events = Kaminari.paginate_array(
+        histories,
+        limit:       per_page,
+        offset:      offset,
+        total_count: total_events
+      )
     end
 
     def detail

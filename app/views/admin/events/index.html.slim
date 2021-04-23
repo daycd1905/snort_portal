@@ -1,7 +1,7 @@
 .content
   .row
     .col-md-6
-      h1 Logs
+      h1 Events
 
     .col-md-6
       ol.breadcrumb.float-sm-right
@@ -10,7 +10,7 @@
             | Events
         li.breadcrumb-item.active Index
 
-.row
+  .row
     .col-md-12
       .table-responsive.table-wrapper
         table.table.table-striped.no-wrap
@@ -20,6 +20,7 @@
               th= Event.human_attribute_name(:Timestamp)
               th= Event.human_attribute_name(:Signature)
               th= Event.human_attribute_name(:Classification)
+              th= Event.human_attribute_name(:Priority)
               th= Event.human_attribute_name(:IP_source)
               th= Event.human_attribute_name(:Port_source)
               th= Event.human_attribute_name(:IP_destination)
@@ -32,27 +33,18 @@
               tr
                 td= index + 1
                 td= event.timestamp
-                td= event.log_signature.sig_name
-                td= event.log_signature.classification.sig_class_name
-                td= [event.iphdr.ip_src].pack('N').unpack('CCCC').join('.')
-                -if event.icmphdr
-                  td= 
-                -elsif event.tcphdr
-                  td= event.tcphdr.tcp_sport
-                -else
-                  td= event.udphdr.udp_sport
-
-                td= [event.iphdr.ip_dst].pack('N').unpack('CCCC').join('.')
-                -if event.icmphdr
-                  td= 
-                -elsif event.tcphdr
-                  td= event.tcphdr.tcp_dport
-                -else
-                  td= event.udphdr.udp_dport
-                -if event.data
+                td= event.sig_name
+                td= event.sig_class_name
+                td= event.priority
+                td= event.ip_src
+                td= event.sport
+                td= event.ip_dst
+                td= event.dport
+                - if event.data_payload
                   td
-                    = link_to 'Detail', detail_admin_event_path(event), :class => "event-detail"
-                -else
-                  td=
+                    = link_to 'Detail', detail_admin_event_path("#{event.cid},#{event.sid}"), :class => "event-detail"
+                - else
+                  td
 
-        = render "shared/paging", collection: @events
+  = render "paging", collection: @events
+  
