@@ -1,6 +1,8 @@
 require_relative "boot"
 
 require "rails/all"
+require 'rack'
+require 'rack/cors'
 require './app/middlewares/request_logger'
 
 # Require the gems listed in Gemfile, including any gems
@@ -21,7 +23,7 @@ module SnortManagement
     # config.eager_load_paths << Rails.root.join("extras")
 
     # Rack CORS configurations
-    config.middleware.insert_before ActionDispatch::Static, Rack::Cors do
+    config.middleware.use Rack::Cors do
       allow do
         origins '*'
         resource '*', headers: :any, methods: %i(get post options put delete)
