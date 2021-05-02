@@ -57,7 +57,7 @@ module EventQuery
         INNER JOIN iphdr on iphdr.sid = event.sid and iphdr.cid = event.cid
         LEFT JOIN data on data.sid = data.sid AND data.cid = event.cid
         ORDER BY event.timestamp DESC
-        LIMIT 10 OFFSET 0
+        LIMIT #{options[:per_page]} OFFSET #{options[:offset]}
       "
     end
 

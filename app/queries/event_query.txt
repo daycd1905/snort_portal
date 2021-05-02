@@ -37,4 +37,4 @@ FROM (event
 	  LEFT JOIN data on data.sid = data.sid AND data.cid = event.cid)
 INNER JOIN iphdr on iphdr.sid = event.sid and iphdr.cid = event.cid
 ORDER BY event.timestamp DESC
-LIMIT 10 OFFSET 0
+LIMIT 10 OFFSET 50

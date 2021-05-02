@@ -4,10 +4,10 @@ module Admin
 
     def index
       page      = params[:page].blank? ? 1 : params[:page].to_i
-      per_page  = params[:per_page].blank? ? Kaminari.config.default_per_page : params[:per_page].to_i
+      per_page  = params[:per_page].blank? ? 25 : params[:per_page].to_i
       offset    = (page - 1) * per_page
       
-      results = EventQuery::Events.new().execute_events
+      results = EventQuery::Events.new({per_page: per_page, offset: offset}).execute_events
       total_events = EventQuery::Events.new().execute_events_count
 
       histories = results.map { |event| EventHistory.new(ActiveSupport::HashWithIndifferentAccess.new(event.to_h)) }
