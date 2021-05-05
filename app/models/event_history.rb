@@ -4,7 +4,7 @@ class EventHistory
               :sig_class_name,
               :sig_name,
               :priority,
-              :protocal,
+              :protocol,
               :ip_src,
               :sport,
               :ip_dst,
@@ -18,6 +18,7 @@ class EventHistory
     @sig_class_name = params["sig_class_name"]
     @sig_name       = params["sig_name"]
     @priority       = params["priority"]
+    @protocol       = params["protocol"]
     @ip_src         = [params["ip_src"]].pack('N').unpack('CCCC').join('.')
     @sport          = params["sport"]
     @ip_dst         = [params["ip_dst"]].pack('N').unpack('CCCC').join('.')

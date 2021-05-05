@@ -19,7 +19,7 @@
               th= Event.human_attribute_name(:index)
               th= Event.human_attribute_name(:Timestamp)
               th= Event.human_attribute_name(:Signature)
-              th= Event.human_attribute_name(:Classification)
+              th= Event.human_attribute_name(:Protocol)
               th= Event.human_attribute_name(:Priority)
               th= Event.human_attribute_name(:IP_source)
               th= Event.human_attribute_name(:Port_source)
@@ -34,7 +34,7 @@
                 td= index + 1
                 td= event.timestamp
                 td= event.sig_name
-                td= event.sig_class_name
+                td= event.protocol
                 td= event.priority
                 td= event.ip_src
                 td= event.sport
