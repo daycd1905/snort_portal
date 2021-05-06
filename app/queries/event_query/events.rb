@@ -23,8 +23,8 @@ module EventQuery
         ,(SELECT signature.sig_name FROM signature WHERE signature.sig_id = event.signature)  
         ,(
           SELECT 
-          CASE WHEN signature.sig_priority > 4 THEN 'High'
-              WHEN signature.sig_priority < 2 and signature.sig_priority <= 4 THEN 'Medium'
+          CASE WHEN signature.sig_priority <= 2 THEN 'High'
+              WHEN signature.sig_priority < 2 and signature.sig_priority < 4 THEN 'Medium'
               ELSE 'Low'
           END as \"priority\"
           FROM signature
